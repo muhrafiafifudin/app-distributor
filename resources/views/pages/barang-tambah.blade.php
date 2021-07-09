@@ -13,7 +13,7 @@
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Utama</li>
                 <li>
-                    <a href="/dashboard" class="waves-effect">
+                    <a href="/" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i><span> Dashboard </span>
                     </a>
                 </li>

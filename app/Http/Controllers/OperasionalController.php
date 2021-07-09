@@ -106,4 +106,13 @@ class OperasionalController extends Controller
 
         return redirect()->route('operasional.index');
     }
+
+    public function report()
+    {
+        $reports = Operasional::all();
+
+        return view('pages.operasional-laporan', [
+            'reports' => $reports
+        ]);
+    }
 }

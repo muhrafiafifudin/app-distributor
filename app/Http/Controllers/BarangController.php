@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use App\Models\BarangModel;
 
 class BarangController extends Controller
 {
@@ -113,5 +114,14 @@ class BarangController extends Controller
         Barang::find($id)->delete();
 
         return redirect()->route('barang.index');
+    }
+
+    public function report()
+    {
+        $reports = Barang::all();
+
+        return view('pages.barang-laporan', [
+            'reports' => $reports
+        ]);
     }
 }

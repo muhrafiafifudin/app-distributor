@@ -16,9 +16,8 @@ class Barang extends Model
         'nama_barang', 
         'ukuran', 
         'spesifikasi',
-        'jumlah_bal', 
+        'harga', 
         'jumlah_lbr', 
-        'jumlah_total',
     ];
 
     protected $hidden = [

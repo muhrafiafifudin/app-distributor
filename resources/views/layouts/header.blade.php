@@ -8,7 +8,7 @@
         <title>@yield('title')</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/title.png">
 
         <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ url('assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
@@ -28,10 +28,10 @@
                 <div class="topbar-left">
                     <a href="index.html" class="logo">
                         <span>
-                            <img src="assets/images/logo-light.png" alt="" height="18">
+                            <img src="assets/images/sidebar-logo.png" class="mt-3" alt="" height="100">
                         </span>
                         <i>
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="assets/images/title.png" alt="" height="32">
                         </i>
                     </a>
                 </div>
@@ -60,7 +60,15 @@
                                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings m-r-5"></i> Settings</a>
                                     <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                    <form class="dropdown-item text-danger" id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                        
+                                        <button type="submit"  >
+                                            <!-- <i class="mdi mdi-power text-danger"></i>  -->
+                                            Logout
+                                    </button>
+                                    </form>
+                                    
                                 </div>                                                                    
                             </div>
                         </li>

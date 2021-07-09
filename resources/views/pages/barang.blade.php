@@ -8,37 +8,7 @@
     <div class="slimscroll-menu" id="remove-scroll">
 
         <!--- Sidemenu -->
-        <div id="sidebar-menu">
-            <!-- Left Menu Start -->
-            <ul class="metismenu" id="side-menu">
-                <li class="menu-title">Utama</li>
-                <li>
-                    <a href="/dashboard" class="waves-effect">
-                        <i class="mdi mdi-view-dashboard"></i><span> Dashboard </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/barang" class="waves-effect active"><i class="ion-android-archive"></i><span> Barang </span></a>
-                </li>
-                <li>
-                    <a href="/penjualan" class="waves-effect"><i class="mdi mdi-cart"></i><span> Penjualan </span></a>
-                </li>
-                <li>
-                    <a href="#" class="waves-effect"><i class="mdi mdi-cart"></i><span> Pembelian </span></a>
-                </li>
-                <li>
-                    <a href="/operasional" class="waves-effect"><i class="mdi mdi-truck"></i><span> Operasional </span></a>
-                </li>
-
-                <li class="menu-title">Laporan</>
-
-                <li>
-                    <a href="#" class="waves-effect"><i class="mdi mdi-calendar-check"></i><span> Laporan Bulanan </span></a>
-                </li>
-
-            </ul>
-
-        </div>
+        @include('layouts.sidebar')
         <!-- Sidebar -->
         <div class="clearfix"></div>
 
@@ -87,14 +57,13 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Keterangan</th>
-                                        <th>Nama Barang</th>
-                                        <th>Ukuran</th>
-                                        <th>Spesifikasi</th>
-                                        <th>Jumlah (BAL)</th>
-                                        <th>Jumlah (LBR)</th>
-                                        <th>Jumlah Total</th>
-                                        <th>Action</th>
+                                        <th><strong>Keterangan</strong></th>
+                                        <th><strong>Nama Barang</strong></th>
+                                        <th><strong>Ukuran</strong></th>
+                                        <th><strong>Spesifikasi</strong></th>
+                                        <th><strong>Harga (@Lbr) </strong></th>
+                                        <th><strong>Jumlah (Lbr)</strong></th>
+                                        <th><strong>Action</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,13 +73,12 @@
                                         <td>{{ $barang->nama_barang }}</td>
                                         <td>{{ $barang->ukuran }}</td>
                                         <td>{{ $barang->spesifikasi }}</td>
-                                        <td>{{ $barang->jumlah_bal }}</td>
+                                        <td>{{ $barang->harga }}</td>
                                         <td>{{ $barang->jumlah_lbr }}</td>
-                                        <td>{{ $barang->jumlah_total }}</td>
                                         <td>
                                             <div class="button-items">
                                                 <div class="text-left">
-                                                    <a class="btn btn-warning waves-effect" href="{{ route('barang.edit', $barang->id) }}">Edit</a> 
+                                                    <a class="btn btn-primary waves-effect" href="{{ route('barang.edit', $barang->id) }}">Edit</a> 
                                                     <button type="button" class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target="#delete">Hapus</button>
                                                 </div>
                                             </div>

@@ -19,9 +19,8 @@ class CreateBarangTable extends Migration
             $table->string('nama_barang');
             $table->string('ukuran');
             $table->string('spesifikasi');
-            $table->integer('jumlah_bal');
+            $table->integer('harga');
             $table->integer('jumlah_lbr');
-            $table->integer('jumlah_total');
             $table->timestamps();
         });
     }

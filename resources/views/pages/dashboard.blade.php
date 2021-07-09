@@ -10,10 +10,10 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
-            <ul class="metismenu" id="side-menu">
+            <ul class="metismenu mt-5" id="side-menu">
                 <li class="menu-title">Utama</li>
                 <li>
-                    <a href="/dashboard" class="waves-effect active">
+                    <a href="/" class="waves-effect active">
                         <i class="mdi mdi-view-dashboard"></i><span> Dashboard </span>
                     </a>
                 </li>
@@ -33,9 +33,14 @@
                 <li class="menu-title">Laporan</>
 
                 <li>
-                    <a href="#" class="waves-effect"><i class="mdi mdi-calendar-check"></i><span> Laporan Bulanan </span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-calendar-check"></i><span> Laporan <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="submenu">
+                        <li><a href="/laporan-barang">Laporan Barang</a></li>
+                        <li><a href="#">Laporan Penjualan</a></li>
+                        <li><a href="#">Laporan Pembelian</a></li>
+                        <li><a href="/laporan-operasional">Laporan Operasional</a></li>
+                    </ul>
                 </li>
-
             </ul>
 
         </div>

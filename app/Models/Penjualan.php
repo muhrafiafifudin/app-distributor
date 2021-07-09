@@ -12,7 +12,6 @@ class Penjualan extends Model
     public $table = "penjualan";
 
     protected $fillable = [
-        'tanggal',
         'jumlah_barang',
         'jumlah_bayar',
     ];
