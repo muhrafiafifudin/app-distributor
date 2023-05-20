@@ -50,9 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/tambah-transaksi', 'App\Http\Controllers\Transaction\TransactionController@create')->name('create');
     });
     // Report
-    // Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {
-    //     Route::get('/', 'App\Http\Controllers\Report\ReportController@index')->name('index');
-    // });
+    Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {
+        Route::get('/', 'App\Http\Controllers\Report\ReportController@index')->name('index');
+    });
     // User
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', 'App\Http\Controllers\System\UserController@index')->name('index');
