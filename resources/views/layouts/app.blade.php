@@ -66,6 +66,8 @@
 		<!--end::Main-->
 
 		@include('includes.script')
+
+        @stack('javascript')
 	</body>
 	<!--end::Body-->
 </html>

@@ -6,4 +6,5 @@
 <!--begin::Page Custom Javascript(used by this page)-->
 <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
 <script src="{{ asset('assets/js/custom/auth/sign-in/general.js') }}"></script>
+<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <!--end::Page Custom Javascript-->

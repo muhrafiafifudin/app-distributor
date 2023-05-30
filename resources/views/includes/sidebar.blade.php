@@ -31,7 +31,7 @@
             <!--begin::Menu-->
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
-                    <a class="menu-link {{ request()->is('dashboard') ? 'active' : '' }}" href="#">
+                    <a class="menu-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ request()->is('kategori') ? 'active' : '' }}" href="#">
+                    <a class="menu-link {{ request()->is('kategori') ? 'active' : '' }}" href="{{ route('category.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -69,7 +69,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ request()->is('produk') ? 'active' : '' }}" href="#">
+                    <a class="menu-link {{ request()->is('barang') ? 'active' : '' }}" href="{{ route('item.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -83,7 +83,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Produk</span>
+                        <span class="menu-title">Barang</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link {{ request()->is('transaksi') ? 'active' : '' }}" href="{{ route('transaction.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link {{ request()->is('laporan') ? 'active' : '' }}" href="{{ route('report.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link {{ request()->is('user') ? 'active' : '' }}" href="{{ route('user.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -156,7 +156,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link {{ request()->is('setting') ? 'active' : '' }}" href="{{ route('store.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
