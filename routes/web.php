@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Product
     Route::group(['prefix' => 'barang', 'as' => 'item.'], function () {
         Route::get('/', 'App\Http\Controllers\Main\ItemController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Main\ItemController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Main\ItemController@update')->name('update');
+        Route::delete('/{item}', 'App\Http\Controllers\Main\ItemController@destroy')->name('destroy');
     });
     // Transaction
     Route::group(['prefix' => 'transaksi', 'as' => 'transaction.'], function () {

@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->integer('code');
-            $table->string('name');
+            $table->string('item');
             $table->string('image');
             $table->tinyInteger('categories_id');
             $table->bigInteger('price');
             $table->longText('description');
+            $table->integer('stock');
             $table->string('slug');
-            $table->integer('qty');
             $table->timestamps();
         });
     }

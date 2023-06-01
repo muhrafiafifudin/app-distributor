@@ -86,7 +86,7 @@
                                                 <!--begin::Heading-->
                                                 <div class="mb-10 text-center">
                                                     <h1 class="mb-3">TAMBAH KATEGORI</h1>
-                                                    <div class="text-gray-400 fw-bold fs-5">Form Untuk Penambahan Data Kategori</div>
+                                                    <div class="text-gray-400 fw-bold fs-5">Form Untuk Menambah Data Kategori</div>
                                                 </div>
                                                 <!--end::Heading-->
                                                 <!--begin::Scroll-->
@@ -153,17 +153,17 @@
                                         </thead>
                                         <tbody>
                                             @php $no = 1; @endphp
-                                            @foreach ($categories as $data)
+                                            @foreach ($categories as $category)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $data->category }}</td>
-                                                    <td class="text-center">{{ $data->stock }}</td>
+                                                    <td>{{ $category->category }}</td>
+                                                    <td class="text-center">{{ $category->stock }}</td>
                                                     <td class="text-center">
-                                                        <form action="{{ route('category.destroy', \Crypt::encrypt($data->id)) }}" method="post">
+                                                        <form action="{{ route('category.destroy', \Crypt::encrypt($category->id)) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
 
-                                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_edit_category_{{ $data->id }}" >
+                                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_edit_category_{{ $category->id }}" >
                                                                 <!--begin::Svg Icon | path: icons/stockholm/Communication/Write.svg-->
                                                                 <span class="svg-icon svg-icon-3">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -195,9 +195,9 @@
                                     </table>
                                     <!--end::Table-->
 
-                                    @foreach ($categories as $data)
+                                    @foreach ($categories as $category)
                                         <!--begin::Modal - New Target-->
-                                        <div class="modal fade" id="modal_edit_category_{{ $data->id }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal fade" id="modal_edit_category_{{ $category->id }}" tabindex="-1" aria-hidden="true">
                                             <!--begin::Modal dialog-->
                                             <div class="modal-dialog modal-dialog-centered mw-650px">
                                                 <!--begin::Modal content-->
@@ -224,35 +224,35 @@
                                                     <div class="modal-body px-10 px-lg-15 pt-0 pb-15">
                                                         <!--begin::Heading-->
                                                         <div class="mb-10 text-center">
-                                                            <h1 class="mb-3">Edit KATEGORI</h1>
+                                                            <h1 class="mb-3">EDIT KATEGORI</h1>
                                                             <div class="text-gray-400 fw-bold fs-5">Form Untuk Mengubah Data Kategori</div>
                                                         </div>
                                                         <!--end::Heading-->
                                                         <!--begin::Scroll-->
                                                         <div class="scroll-y me-n7 pe-7" id="kt_modal_new_target_form" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                                                             <!--begin:Form-->
-                                                            <form class="form" action="{{ route('category.update', \Crypt::encrypt($data->id)) }}" method="POST">
+                                                            <form class="form" action="{{ route('category.update', \Crypt::encrypt($category->id)) }}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
 
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kategori</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kategori" name="category" value="{{ $data->category }}" />
+                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kategori" name="category" value="{{ $category->category }}" />
                                                                 </div>
                                                                 <!--end::Input group-->
 
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Stok</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kategori" name="stock" value="{{ $data->stock }}" />
+                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kategori" name="stock" value="{{ $category->stock }}" />
                                                                 </div>
                                                                 <!--end::Input group-->
 
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Slug / Url</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Slug / Url" name="slug" value="{{ $data->slug }}" />
+                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Slug / Url" name="slug" value="{{ $category->slug }}" />
                                                                 </div>
                                                                 <!--end::Input group-->
 
@@ -291,7 +291,6 @@
 @endsection
 
 @push('javascript')
-    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/pages/main/category.js') }}"></script>
 
     @if($message = Session::get('success'))
