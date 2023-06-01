@@ -14,4 +14,19 @@ class UserController extends Controller
 
         return view('pages.system.user', compact('users'));
     }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
 }
