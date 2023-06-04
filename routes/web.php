@@ -63,8 +63,4 @@ Route::group(['middleware' => 'auth'], function () {
         Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\System\UserController@update')->name('update');
         Route::delete('/{user}', 'App\Http\Controllers\System\UserController@destroy')->name('destroy');
     });
-    // Store
-    Route::group(['prefix' => 'setting', 'as' => 'store.'], function () {
-        Route::get('/', 'App\Http\Controllers\System\StoreController@index')->name('index');
-    });
 });
