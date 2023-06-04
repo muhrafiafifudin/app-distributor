@@ -20,24 +20,14 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000'
-            ]);
-
             $image = $request->file('image');
             $image->move('assets/media/image', $image->getClientOriginalName());
 
             $image_url = $image->getClientOriginalName();
 
             $item = new Item();
-            $item->code = $request->code;
             $item->item = $request->item;
             $item->image = $image_url;
-            $item->categories_id = $request->categories_id;
-            $item->price = $request->price;
-            $item->description = $request->description;
-            $item->stock = $request->stock;
-            $item->slug = $request->slug;
             $item->save();
 
             return redirect()->route('item.index')->with(['success' => 'Berhasil Menambahkan Data !!']);
@@ -53,20 +43,22 @@ class ItemController extends Controller
             $id = Crypt::decrypt($id);
 
             $item = Item::findOrFail($id);
-            $item->code = $request->code;
             $item->item = $request->item;
-            $item->image = $request->image;
-            $item->categories_id = $request->categories_id;
-            $item->price = $request->price;
-            $item->description = $request->description;
-            $item->stock = $request->stock;
-            $item->slug = $request->slug;
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $image->move('assets/media/image', $image->getClientOriginalName());
+
+                $image_url = $image->getClientOriginalName();
+
+                $item->image = $image_url;
+            }
+
             $item->update();
 
             return redirect()->route('item.index')->with(['success' => 'Berhasil Mengubah Data !!']);
         } catch (\Throwable $th) {
             return redirect()->route('item.index')->with(['error' => 'Gagal Mengubah Data !!']);
-
         }
     }
 

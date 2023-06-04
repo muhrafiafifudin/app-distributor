@@ -98,13 +98,6 @@
 
                                                         <!--begin::Input group-->
                                                         <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kode Barang</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode Barang" name="code" required />
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">Nama Barang</label>
                                                             <input type="text" class="form-control form-control-solid" placeholder="Masukkan Nama Barang" name="item" required />
                                                         </div>
@@ -114,34 +107,6 @@
                                                         <div class="d-flex flex-column mb-5 fv-row">
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">Gambar</label>
                                                             <input type="file" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" required />
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Harga</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukka Harga" name="price" required />
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Deskripsi</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Deskripsi" name="description" required />
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Stok</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Stok" name="stock" required />
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Slug / Url</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Slug / Url" name="slug" required />
                                                         </div>
                                                         <!--end::Input group-->
 
@@ -176,7 +141,6 @@
                                                 <th>No.</th>
                                                 <th>Gambar</th>
                                                 <th>Nama Barang</th>
-                                                <th class="text-center">Harga</th>
                                                 <th class="text-center">Total Barang</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
@@ -190,7 +154,6 @@
                                                         <img src="{{ asset('assets/media/image/' . $item->image) }}" alt="{{ $item->item }}" width="150px">
                                                     </td>
                                                     <td>{{ $item->item }}</td>
-                                                    <td class="text-center">Rp. {{ number_format($item->price, 2, ',', '.') }}</td>
                                                     <td class="text-center">{{ $item->stock }}</td>
                                                     <td class="text-center">
                                                         <form action="{{ route('item.destroy', \Crypt::encrypt($item->id)) }}" method="post">
@@ -265,16 +228,9 @@
                                                         <!--begin::Scroll-->
                                                         <div class="scroll-y me-n7 pe-7" id="kt_modal_new_target_form" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                                                             <!--begin:Form-->
-                                                            <form class="form" action="{{ route('item.update', \Crypt::encrypt($item->id)) }}" method="POST">
+                                                            <form class="form" action="{{ route('item.update', \Crypt::encrypt($item->id)) }}" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kode Barang</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode Barang" name="code" value="{{ $item->code }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
 
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
@@ -286,35 +242,7 @@
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Gambar</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" value="{{ $item->image }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Harga</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukka Harga" name="price" value="{{ $item->price }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Deskripsi</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Deskripsi" name="description" value="{{ $item->description }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Stok</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Stok" name="stock" value="{{ $item->stock }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Slug / Url</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Slug / Url" name="slug" value="{{ $item->slug }}" />
+                                                                    <input type="file" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" />
                                                                 </div>
                                                                 <!--end::Input group-->
 
