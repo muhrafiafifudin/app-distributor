@@ -33,13 +33,6 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    // Category
-    Route::group(['prefix' => 'kategori', 'as' => 'category.'], function () {
-        Route::get('/', 'App\Http\Controllers\Main\CategoryController@index')->name('index');
-        Route::post('/', 'App\Http\Controllers\Main\CategoryController@store')->name('store');
-        Route::match(['put', 'patch'], '/{category}', 'App\Http\Controllers\Main\CategoryController@update')->name('update');
-        Route::delete('/{category}', 'App\Http\Controllers\Main\CategoryController@destroy')->name('destroy');
-    });
     // Product
     Route::group(['prefix' => 'barang', 'as' => 'item.'], function () {
         Route::get('/', 'App\Http\Controllers\Main\ItemController@index')->name('index');

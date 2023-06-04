@@ -119,19 +119,6 @@
 
                                                         <!--begin::Input group-->
                                                         <div class="d-flex flex-column mb-5 fv-row">
-                                                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kategori</label>
-                                                            <select name="categories_id" aria-label="Pilih Kategori" data-control="select2" data-placeholder="Pilih Kategori" class="form-select form-select-solid fw-bolder">
-                                                                <option value="">Pilih Kategori</option>
-
-                                                                @foreach ($categories as $category)
-                                                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <!--end::Input group-->
-
-                                                        <!--begin::Input group-->
-                                                        <div class="d-flex flex-column mb-5 fv-row">
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">Harga</label>
                                                             <input type="text" class="form-control form-control-solid" placeholder="Masukka Harga" name="price" required />
                                                         </div>
@@ -300,19 +287,6 @@
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Gambar</label>
                                                                     <input type="text" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" value="{{ $item->image }}" />
-                                                                </div>
-                                                                <!--end::Input group-->
-
-                                                                <!--begin::Input group-->
-                                                                <div class="d-flex flex-column mb-5 fv-row">
-                                                                    <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kategori</label>
-                                                                    <select name="categories_id" aria-label="Pilih Kategori" data-control="select2" data-placeholder="Pilih Kategori" class="form-select form-select-solid fw-bolder">
-                                                                        <option value="">Pilih Kategori</option>
-
-                                                                        @foreach ($categories as $category)
-                                                                            <option value="{{ $category->id }}">{{ $category->category }}</option>
-                                                                        @endforeach
-                                                                    </select>
                                                                 </div>
                                                                 <!--end::Input group-->
 

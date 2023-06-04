@@ -13,9 +13,8 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        $categories = Category::all();
 
-        return view('pages.main.item', compact('items', 'categories'));
+        return view('pages.main.item', compact('items'));
     }
 
     public function store(Request $request)
