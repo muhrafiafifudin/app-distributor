@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default(bcrypt('12345678'));
+            $table->tinyInteger('is_active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
