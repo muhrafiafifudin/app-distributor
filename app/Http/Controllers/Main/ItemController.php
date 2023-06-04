@@ -21,10 +21,19 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         try {
+            $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000'
+            ]);
+
+            $image = $request->file('image');
+            $image->move('assets/media/image', $image->getClientOriginalName());
+
+            $image_url = $image->getClientOriginalName();
+
             $item = new Item();
             $item->code = $request->code;
             $item->item = $request->item;
-            $item->image = $request->image;
+            $item->image = $image_url;
             $item->categories_id = $request->categories_id;
             $item->price = $request->price;
             $item->description = $request->description;

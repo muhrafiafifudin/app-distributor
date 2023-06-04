@@ -92,7 +92,7 @@
                                                 <!--begin::Scroll-->
                                                 <div class="scroll-y me-n7 pe-7" id="kt_modal_new_target_form" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                                                     <!--begin:Form-->
-                                                    <form class="form" action="{{ route('item.store') }}" method="POST">
+                                                    <form class="form" action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data" >
                                                         @csrf
                                                         @method('POST')
 
@@ -113,7 +113,7 @@
                                                         <!--begin::Input group-->
                                                         <div class="d-flex flex-column mb-5 fv-row">
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">Gambar</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" required />
+                                                            <input type="file" class="form-control form-control-solid" placeholder="Masukkan Gambar" name="image" required />
                                                         </div>
                                                         <!--end::Input group-->
 
@@ -199,7 +199,9 @@
                                             @foreach ($items as $item)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $item->image }}</td>
+                                                    <td>
+                                                        <img src="{{ asset('assets/media/image/' . $item->image) }}" alt="{{ $item->item }}" width="150px">
+                                                    </td>
                                                     <td>{{ $item->item }}</td>
                                                     <td class="text-center">Rp. {{ number_format($item->price, 2, ',', '.') }}</td>
                                                     <td class="text-center">{{ $item->stock }}</td>
