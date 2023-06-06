@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ request()->is('transaksi') ? 'active' : '' }}" href="{{ route('transaction.index') }}">
+                    <a class="menu-link {{ request()->is('barang-masuk') ? 'active' : '' }}" href="{{ route('incoming-item.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -92,7 +92,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ request()->is('transaksi') ? 'active' : '' }}" href="{{ route('transaction.index') }}">
+                    <a class="menu-link {{ request()->is('barang-keluar') ? 'active' : '' }}" href="{{ route('outgoing-item.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-arrange.svg-->
                             <span class="svg-icon svg-icon-2">

@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    // Product
+    // Item
     Route::group(['prefix' => 'barang', 'as' => 'item.'], function () {
         Route::get('/', 'App\Http\Controllers\Main\ItemController@index')->name('index');
         Route::post('/', 'App\Http\Controllers\Main\ItemController@store')->name('store');
@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Incoming Item
     Route::group(['prefix' => 'barang-masuk', 'as' => 'incoming-item.'], function () {
         Route::get('/', 'App\Http\Controllers\Transaction\IncomingItemController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Transaction\IncomingItemController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Transaction\IncomingItemController@update')->name('update');
+        Route::delete('/{incomingItem}', 'App\Http\Controllers\Transaction\IncomingItemController@destroy')->name('destroy');
     });
     // Outgoing Item
     Route::group(['prefix' => 'barang-keluar', 'as' => 'outgoing-item.'], function () {

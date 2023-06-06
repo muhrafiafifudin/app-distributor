@@ -32,7 +32,6 @@ class ItemController extends Controller
 
             return redirect()->route('item.index')->with(['success' => 'Berhasil Menambahkan Data !!']);
         } catch (\Throwable $th) {
-            dd($th);
             return redirect()->route('item.index')->with(['error' => 'Gagal Menambahkan Data !!']);
         }
     }

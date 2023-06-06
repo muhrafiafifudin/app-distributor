@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('outgoing_item_id');
             $table->string('item_id');
-            $table->integer('stock');
+            $table->integer('qty');
             $table->timestamps();
         });
     }

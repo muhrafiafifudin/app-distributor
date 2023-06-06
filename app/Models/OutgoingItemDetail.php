@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OutgoingItemDetail extends Model
 {
     use HasFactory;
+
+    protected $table = 'outgoing_item_details';
+
+    protected $guarded = [];
 }
