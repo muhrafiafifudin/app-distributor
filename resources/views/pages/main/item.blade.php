@@ -154,7 +154,7 @@
                                                         <img src="{{ asset('assets/media/image/' . $item->image) }}" alt="{{ $item->item }}" width="150px">
                                                     </td>
                                                     <td>{{ $item->item }}</td>
-                                                    <td class="text-center">{{ $item->stock }}</td>
+                                                    <td class="text-center">{{ $item->stock . ' pcs' }}</td>
                                                     <td class="text-center">
                                                         <form action="{{ route('item.destroy', \Crypt::encrypt($item->id)) }}" method="post">
                                                             @csrf

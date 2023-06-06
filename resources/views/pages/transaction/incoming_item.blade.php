@@ -99,7 +99,7 @@
                                                         <!--begin::Input group-->
                                                         <div class="d-flex flex-column mb-5 fv-row">
                                                             <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kode</label>
-                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode" name="code" required />
+                                                            <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode" name="code" value="{{ $code }}" readonly />
                                                         </div>
                                                         <!--end::Input group-->
 
@@ -166,7 +166,7 @@
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $incoming_item->code }}</td>
                                                     <td>{{ $incoming_item->item->item }}</td>
-                                                    <td class="text-center">{{ $incoming_item->stock }}</td>
+                                                    <td class="text-center">{{ $incoming_item->stock . ' pcs' }}</td>
                                                     <td class="text-center">{{ \Carbon\Carbon::parse($incoming_item->created_at)->translatedFormat('j F Y') }}</td>
                                                     <td class="text-center">
                                                         <form action="{{ route('incoming-item.destroy', \Crypt::encrypt($incoming_item->id)) }}" method="post">
@@ -248,7 +248,7 @@
                                                                 <!--begin::Input group-->
                                                                 <div class="d-flex flex-column mb-5 fv-row">
                                                                     <label class="d-flex align-items-center fs-6 fw-bold mb-2">Kode</label>
-                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode" name="code" value="{{ $incoming_item->code }}" />
+                                                                    <input type="text" class="form-control form-control-solid" placeholder="Masukkan Kode" name="code" value="{{ $incoming_item->code }}" readonly />
                                                                 </div>
                                                                 <!--end::Input group-->
 

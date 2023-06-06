@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('incoming_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
+            $table->string('code');
             $table->integer('item_id');
             $table->integer('stock');
             $table->integer('user_id');

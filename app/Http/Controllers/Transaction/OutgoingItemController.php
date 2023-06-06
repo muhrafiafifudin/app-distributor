@@ -11,4 +11,19 @@ class OutgoingItemController extends Controller
     {
         return view('pages.transaction.outgoing_item');
     }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
 }

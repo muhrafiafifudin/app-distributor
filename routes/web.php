@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Outgoing Item
     Route::group(['prefix' => 'barang-keluar', 'as' => 'outgoing-item.'], function () {
         Route::get('/', 'App\Http\Controllers\Transaction\OutgoingItemController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Transaction\OutgoingItemController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Transaction\OutgoingItemController@update')->name('update');
+        Route::delete('/{outgoingItem}', 'App\Http\Controllers\Transaction\OutgoingItemController@destroy')->name('destroy');
     });
     // Report
     Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {

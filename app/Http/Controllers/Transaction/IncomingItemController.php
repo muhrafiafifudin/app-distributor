@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Transaction;
 
+use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\IncomingItem;
 use Illuminate\Http\Request;
@@ -14,9 +15,27 @@ class IncomingItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        $incoming_items = IncomingItem::all();
+        $incoming_items = IncomingItem::where('stock', '!=', 0)->get();
 
-        return view('pages.transaction.incoming_item', compact('items', 'incoming_items'));
+        $currentYear = Carbon::now()->format('Y');
+        $lastRecord = IncomingItem::orderBy('id', 'desc')->first();
+
+        if ($lastRecord) {
+            $lastCode = $lastRecord->code;
+            $lastYear = substr($lastCode, 0, 4);
+
+            if ($lastYear == $currentYear) {
+                $temporaryCode = substr($lastCode, 5, 6) + 1;
+            } else {
+                $temporaryCode = 1;
+            }
+        } else {
+            $temporaryCode = 1;
+        }
+
+        $code = $currentYear . '_' . $temporaryCode;
+
+        return view('pages.transaction.incoming_item', compact('code', 'items', 'incoming_items'));
     }
 
     public function store(Request $request)
