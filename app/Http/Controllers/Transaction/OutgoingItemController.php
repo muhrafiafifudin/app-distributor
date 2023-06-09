@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Transaction;
 
-use App\Http\Controllers\Controller;
+use App\Models\OutgoingItem;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OutgoingItemController extends Controller
 {
     public function index()
     {
-        return view('pages.transaction.outgoing_item');
+        $outgoing_items = OutgoingItem::all();
+
+        return view('pages.transaction.outgoing_item', compact('outgoing_items'));
     }
 
     public function store(Request $request)
