@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Transaction;
+namespace App\Http\Controllers\Item;
 
 use Carbon\Carbon;
 use App\Models\Item;
@@ -35,7 +35,7 @@ class IncomingItemController extends Controller
 
         $code = $currentYear . '_' . $temporaryCode;
 
-        return view('pages.transaction.incoming_item', compact('code', 'items', 'incoming_items'));
+        return view('pages.item.incoming_item', compact('code', 'items', 'incoming_items'));
     }
 
     public function store(Request $request)

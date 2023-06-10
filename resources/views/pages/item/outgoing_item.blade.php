@@ -185,7 +185,7 @@
 @endsection
 
 @push('javascript')
-    <script src="{{ asset('assets/js/pages/transaction/outgoing_item.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/item/outgoing_item.js') }}"></script>
 
     @if($message = Session::get('success'))
         <script type="text/javascript">

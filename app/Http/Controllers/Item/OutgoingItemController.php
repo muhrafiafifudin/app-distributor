@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Transaction;
+namespace App\Http\Controllers\Item;
 
 use App\Models\OutgoingItem;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class OutgoingItemController extends Controller
     {
         $outgoing_items = OutgoingItem::all();
 
-        return view('pages.transaction.outgoing_item', compact('outgoing_items'));
+        return view('pages.item.outgoing_item', compact('outgoing_items'));
     }
 
     public function store(Request $request)

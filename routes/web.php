@@ -42,17 +42,21 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // Incoming Item
     Route::group(['prefix' => 'barang-masuk', 'as' => 'incoming-item.'], function () {
-        Route::get('/', 'App\Http\Controllers\Transaction\IncomingItemController@index')->name('index');
-        Route::post('/', 'App\Http\Controllers\Transaction\IncomingItemController@store')->name('store');
-        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Transaction\IncomingItemController@update')->name('update');
-        Route::delete('/{incomingItem}', 'App\Http\Controllers\Transaction\IncomingItemController@destroy')->name('destroy');
+        Route::get('/', 'App\Http\Controllers\Item\IncomingItemController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Item\IncomingItemController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Item\IncomingItemController@update')->name('update');
+        Route::delete('/{incomingItem}', 'App\Http\Controllers\Item\IncomingItemController@destroy')->name('destroy');
     });
     // Outgoing Item
     Route::group(['prefix' => 'barang-keluar', 'as' => 'outgoing-item.'], function () {
-        Route::get('/', 'App\Http\Controllers\Transaction\OutgoingItemController@index')->name('index');
-        Route::post('/', 'App\Http\Controllers\Transaction\OutgoingItemController@store')->name('store');
-        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Transaction\OutgoingItemController@update')->name('update');
-        Route::delete('/{outgoingItem}', 'App\Http\Controllers\Transaction\OutgoingItemController@destroy')->name('destroy');
+        Route::get('/', 'App\Http\Controllers\Item\OutgoingItemController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Item\OutgoingItemController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Item\OutgoingItemController@update')->name('update');
+        Route::delete('/{outgoingItem}', 'App\Http\Controllers\Item\OutgoingItemController@destroy')->name('destroy');
+    });
+    // Transaction
+    Route::group(['prefix' => 'transaksi', 'as' => 'transaction.'], function () {
+        Route::get('/', 'App\Http\Controllers\Transaction\TransactionController@index')->name('index');
     });
     // Report
     Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {
