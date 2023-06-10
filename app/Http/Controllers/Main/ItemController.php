@@ -26,6 +26,7 @@ class ItemController extends Controller
             $image_url = $image->getClientOriginalName();
 
             $item = new Item();
+            $item->code = $request->code;
             $item->item = $request->item;
             $item->image = $image_url;
             $item->save();
@@ -42,6 +43,7 @@ class ItemController extends Controller
             $id = Crypt::decrypt($id);
 
             $item = Item::findOrFail($id);
+            $item->code = $request->code;
             $item->item = $request->item;
 
             if ($request->hasFile('image')) {
