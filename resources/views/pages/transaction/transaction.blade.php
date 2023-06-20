@@ -122,7 +122,7 @@
                                                                     <td align="center" valign="middle">{{ $item->stock . ' pcs' }}</td>
                                                                     <td align="center" valign="middle">
                                                                         @if ($item->stock !== 0)
-                                                                            <form action="{{ route('transaction.add-item-transaction') }}" method="POST">
+                                                                            <form action="{{ route('transaction.add-item') }}" method="POST">
                                                                                 @csrf
                                                                                 @method('POST')
 
@@ -189,12 +189,13 @@
                                         </thead>
                                         <tbody>
                                             @php $no = 1; @endphp
-                                            @foreach ($item_transactions as $item_transaction)
+                                            @foreach ($cartItems as $cartItem)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $item_transaction->item_code }}</td>
-                                                    <td>{{ $item_transaction->item_name }}</td>
-                                                    <td>1</td>
+                                                    <td>{{ $cartItem->item->code }}</td>
+                                                    <td>{{ $cartItem->item->item }}</td>
+                                                    <td class="text-center">{{ $cartItem->item_qty . ' pcs' }}</td>
+                                                    <td class="text-center">Button</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -236,6 +237,14 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 toastr.success("{{ $message }}");
+            })
+        </script>
+    @endif
+
+    @if($message = Session::get('warning'))
+        <script type="text/javascript">
+            $(document).ready(function() {
+                toastr.warning("{{ $message }}");
             })
         </script>
     @endif

@@ -2,39 +2,83 @@
 
 namespace App\Http\Controllers\Transaction;
 
+use Session;
+use App\Models\Cart;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function index()
     {
-        $item_transactions = Session::all();
         $items = Item::all();
+        $cartItems = Cart::where('user_id', Auth::id())->get();
 
-        // dd($item_transactions);
-
-        return view('pages.transaction.transaction', compact('item_transactions', 'items'));
+        return view('pages.transaction.transaction', compact('items', 'cartItems'));
     }
 
-    public function addItemTransaction(Request $request)
+    public function addItem(Request $request)
     {
         try {
-            $item_id = $request->item_id;
+            if (Auth::check()) {
+                $item_id = $request->item_id;
 
-            $item = Item::where('id', $item_id)->first();
+                $item_check = Item::where('id', $item_id)->first();
 
-            Session::put([
-                'item_id' => $item->id,
-                'item_code' => $item->code,
-                'item_name' => $item->item
-            ]);
+                if (Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->exists()) {
+                    return redirect()->route('transaction.index')->with('warning', $item_check->item . ' Sudah Ditambahkan !!');
+                } else {
+                    $cartItem = new Cart();
+                    $cartItem->user_id = Auth::id();
+                    $cartItem->item_id = $item_id;
+                    $cartItem->item_qty = 1;
+                    $cartItem->save();
 
-            return redirect()->route('transaction.index')->with('success', 'Berhasil Menambahkan Barang !!');
+                    return redirect()->route('transaction.index')->with('success', $item_check->item . ' Berhasil Ditambahkan !!');
+                }
+            }
         } catch (\Throwable $th) {
             return redirect()->route('transaction.index')->with('error', 'Gagal Menambahkan Barang !!');
+        }
+    }
+
+    public function updateItem(Request $request)
+    {
+        try {
+            if (Auth::check()) {
+                $item_id = $request->item_id;
+                $item_qty = $request->item_qty;
+
+                if (Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->exists()) {
+                    $cartItem = Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->first();
+                    $cartItem->item_qty = $item_qty;
+                    $cartItem->update();
+
+                    return redirect()->route('transaction.index')->with('success', 'Berhasil Mengubah Barang !!');
+                }
+            }
+        } catch (\Throwable $th) {
+            return redirect()->route('transaction.index')->with('error', 'Gagal Mengubah Barang !!');
+        }
+    }
+
+    public function deleteItem(Request $request)
+    {
+        try {
+            if (Auth::check()) {
+                $item_id = $request->item_id;
+
+                if (Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->exists()) {
+                    $cartItem = Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->first();
+                    $cartItem->delete();
+
+                    return redirect()->route('transaction.index')->with('success', 'Barang Berhasil Dihapus !!');
+                }
+            }
+        } catch (\Throwable $th) {
+            return redirect()->route('transaction.index')->with('error', 'Gagal Menghapus Barang !!');
         }
     }
 }

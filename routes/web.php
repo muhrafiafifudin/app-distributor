@@ -57,7 +57,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Transaction
     Route::group(['prefix' => 'transaksi', 'as' => 'transaction.'], function () {
         Route::get('/', 'App\Http\Controllers\Transaction\TransactionController@index')->name('index');
-        Route::post('/', 'App\Http\Controllers\Transaction\TransactionController@addItemTransaction')->name('add-item-transaction');
+        Route::post('/add-item', 'App\Http\Controllers\Transaction\TransactionController@addItem')->name('add-item');
+        Route::post('/update-item', 'App\Http\Controllers\Transaction\TransactionController@updateItem')->name('update-item');
+        Route::post('/delete-item', 'App\Http\Controllers\Transaction\TransactionController@deleteItem')->name('delete-item');
     });
     // Report
     Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {
