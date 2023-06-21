@@ -8,6 +8,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class TransactionController extends Controller
 {
@@ -64,21 +65,17 @@ class TransactionController extends Controller
         }
     }
 
-    public function deleteItem(Request $request)
+    public function deleteItem($id)
     {
         try {
-            if (Auth::check()) {
-                $item_id = $request->item_id;
+            $id = Crypt::decrypt($id);
 
-                if (Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->exists()) {
-                    $cartItem = Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->first();
-                    $cartItem->delete();
+            $item = Cart::findOrFail($id);
+            $item->delete();
 
-                    return redirect()->route('transaction.index')->with('success', 'Barang Berhasil Dihapus !!');
-                }
-            }
+            return redirect()->route('transaction.index')->with(['success' => 'Berhasil Menghapus Data !!']);
         } catch (\Throwable $th) {
-            return redirect()->route('transaction.index')->with('error', 'Gagal Menghapus Barang !!');
+            return redirect()->route('transaction.index')->with(['error' => 'Gagal Menghapus Data !!']);
         }
     }
 }
