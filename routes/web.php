@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'App\Http\Controllers\Transaction\TransactionController@index')->name('index');
         Route::post('/add-item', 'App\Http\Controllers\Transaction\TransactionController@addItem')->name('add-item');
         Route::post('/update-item', 'App\Http\Controllers\Transaction\TransactionController@updateItem')->name('update-item');
-        Route::post('/delete-item/{transactionItem}', 'App\Http\Controllers\Transaction\TransactionController@deleteItem')->name('delete-item');
+        Route::post('/delete-item', 'App\Http\Controllers\Transaction\TransactionController@deleteItem')->name('delete-item');
     });
     // Report
     Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {

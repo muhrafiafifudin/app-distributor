@@ -65,16 +65,26 @@ class TransactionController extends Controller
         }
     }
 
-    public function deleteItem($id)
+    public function deleteItem(Request $request)
     {
         try {
-            $id = Crypt::decrypt($id);
+            if (Auth::check()) {
+                $item_id = intval($request->item_id);
 
-            $item = Cart::findOrFail($id);
-            $item->delete();
+                if (Cart::where('item_id', $item_id)->where('user_id', Auth::id())->exists()) {
+                    $cartItem = Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->first();
+                    $cartItem->delete();
 
-            return redirect()->route('transaction.index')->with(['success' => 'Berhasil Menghapus Data !!']);
+                    // return response()->json(['status' => 'Produk Berhasil Dihapus !!']);
+                    return redirect()->route('transaction.index')->with(['success' => 'Berhasil Menghapus Data !!']);
+                }
+            } else {
+                return redirect()->route('transaction.index')->with(['success' => 'Gagal Menghapus Data !!']);
+                // return response()->json(['status' => "Silahkan Login Terlebih Dahulu"]);
+            }
+
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('transaction.index')->with(['error' => 'Gagal Menghapus Data !!']);
         }
     }

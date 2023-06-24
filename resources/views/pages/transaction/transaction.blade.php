@@ -190,7 +190,7 @@
                                         <tbody>
                                             @php $no = 1; @endphp
                                             @foreach ($cartItems as $cartItem)
-                                                <tr>
+                                                <tr class="item-data">
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $cartItem->item->code }}</td>
                                                     <td>{{ $cartItem->item->item }}</td>
@@ -228,11 +228,9 @@
                                                         <!--end::Dialer-->
                                                     </td>
                                                     <td class="text-center">
-                                                        <form action="{{ route('transaction.delete-item', \Crypt::encrypt($cartItem->id)) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
+                                                        <input type="hidden" class="item-id" value="{{ $cartItem->item_id }}">
 
-                                                            <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-data" title="Hapus">
+                                                        <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-data" title="Hapus">
                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Trash.svg-->
                                                             <span class="svg-icon svg-icon-3">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -245,7 +243,6 @@
                                                             </span>
                                                             <!--end::Svg Icon-->
                                                         </button>
-                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
