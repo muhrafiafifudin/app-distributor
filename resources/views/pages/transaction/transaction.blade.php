@@ -196,6 +196,27 @@
                                                     <td>{{ $cartItem->item->item }}</td>
                                                     <td class="text-center">
                                                         <!--begin::Dialer-->
+                                                        <div class="input-group w-md-300px" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="{{ $cartItem->item->stock }}" data-kt-dialer-step="1" data-kt-dialer-suffix=" pcs">
+
+                                                            <!--begin::Decrease control-->
+                                                            <button class="btn btn-icon btn-outline btn-outline-secondary" type="button" data-kt-dialer-control="decrease">
+                                                                <i class="bi bi-dash fs-1"></i>
+                                                            </button>
+                                                            <!--end::Decrease control-->
+
+                                                            <!--begin::Input control-->
+                                                            <input type="text" class="form-control" readonly placeholder="Amount" value="{{ $cartItem->item_qty }}" data-kt-dialer-control="input"/>
+                                                            <!--end::Input control-->
+
+                                                            <!--begin::Increase control-->
+                                                            <button class="btn btn-icon btn-outline btn-outline-secondary" type="button" data-kt-dialer-control="increase">
+                                                                <i class="bi bi-plus fs-1"></i>
+                                                            </button>
+                                                            <!--end::Increase control-->
+                                                        </div>
+                                                        <!--end::Dialer-->
+
+                                                        {{-- <!--begin::Dialer-->
                                                         <div class="position-relative w-lg-200px m-0-auto" id="kt_modal_create_project_budget_setup" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="{{ $cartItem->item->stock }}" data-kt-dialer-step="1" data-kt-dialer-suffix=" pcs">
                                                             <!--begin::Decrease control-->
                                                             <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
@@ -225,7 +246,7 @@
                                                             </button>
                                                             <!--end::Increase control-->
                                                         </div>
-                                                        <!--end::Dialer-->
+                                                        <!--end::Dialer--> --}}
                                                     </td>
                                                     <td class="text-center">
                                                         <input type="hidden" class="item-id" value="{{ $cartItem->item_id }}">
