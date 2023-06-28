@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('outgoing_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
+            $table->string('code');
             $table->integer('user_id');
             $table->integer('status')->default(0)->comment('0 = Waiting, 1 = Process, 3 = Reject, 4 = Finish');
             $table->timestamps();

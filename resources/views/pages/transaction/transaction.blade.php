@@ -173,7 +173,10 @@
                         <!--end::Header-->
                         <!--begin::Body-->
                         <div class="card-body py-3 pt-10">
-                            <form action="">
+                            <form action="{{ route('outgoing-item.store') }}" method="POST">
+                                @csrf
+                                @method('POST')
+
                                 <!--begin::Table container-->
                                 <div class="table-responsive">
                                     <!--begin::Table-->
@@ -196,27 +199,6 @@
                                                     <td>{{ $cartItem->item->item }}</td>
                                                     <td class="text-center">
                                                         <!--begin::Dialer-->
-                                                        <div class="input-group w-md-300px" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="{{ $cartItem->item->stock }}" data-kt-dialer-step="1" data-kt-dialer-suffix=" pcs">
-
-                                                            <!--begin::Decrease control-->
-                                                            <button class="btn btn-icon btn-outline btn-outline-secondary" type="button" data-kt-dialer-control="decrease">
-                                                                <i class="bi bi-dash fs-1"></i>
-                                                            </button>
-                                                            <!--end::Decrease control-->
-
-                                                            <!--begin::Input control-->
-                                                            <input type="text" class="form-control" readonly placeholder="Amount" value="{{ $cartItem->item_qty }}" data-kt-dialer-control="input"/>
-                                                            <!--end::Input control-->
-
-                                                            <!--begin::Increase control-->
-                                                            <button class="btn btn-icon btn-outline btn-outline-secondary" type="button" data-kt-dialer-control="increase">
-                                                                <i class="bi bi-plus fs-1"></i>
-                                                            </button>
-                                                            <!--end::Increase control-->
-                                                        </div>
-                                                        <!--end::Dialer-->
-
-                                                        {{-- <!--begin::Dialer-->
                                                         <div class="position-relative w-lg-200px m-0-auto" id="kt_modal_create_project_budget_setup" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="{{ $cartItem->item->stock }}" data-kt-dialer-step="1" data-kt-dialer-suffix=" pcs">
                                                             <!--begin::Decrease control-->
                                                             <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
@@ -231,7 +213,7 @@
                                                             </button>
                                                             <!--end::Decrease control-->
                                                             <!--begin::Input control-->
-                                                            <input type="text" class="form-control form-control-solid border-0 text-center" data-kt-dialer-control="input" placeholder="Amount" name="budget_setup" readonly="readonly" value="{{ $cartItem->item_qty }}" />
+                                                            <input type="text" class="form-control form-control-solid border-0 text-center" data-kt-dialer-control="input" placeholder="Amount" name="item[qty[]]" readonly="readonly" value="{{ $cartItem->item_qty }}" />
                                                             <!--end::Input control-->
                                                             <!--begin::Increase control-->
                                                             <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
@@ -246,10 +228,10 @@
                                                             </button>
                                                             <!--end::Increase control-->
                                                         </div>
-                                                        <!--end::Dialer--> --}}
+                                                        <!--end::Dialer-->
                                                     </td>
                                                     <td class="text-center">
-                                                        <input type="hidden" class="item-id" value="{{ $cartItem->item_id }}">
+                                                        <input type="hidden" class="item-id" name="item[item_id[]]" value="{{ $cartItem->item_id }}">
 
                                                         <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-data" title="Hapus">
                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Trash.svg-->
