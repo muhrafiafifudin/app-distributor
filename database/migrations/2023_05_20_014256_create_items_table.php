@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('item');
             $table->string('image');
-            $table->integer('stock')->default(0);
+            $table->integer('stock')->default(0)->unsigned();
             $table->timestamps();
         });
     }

@@ -50,15 +50,15 @@ class OutgoingItemController extends Controller
 
             $cartItems = Cart::where('user_id', Auth::id())->get();
 
-            foreach ($$cartItems as $cartItem) {
-                $outegoing_item_details = new OutgoingItemDetail();
-                $outegoing_item_details->outgoing_item_id = $outgoing_item->id;
-                $outegoing_item_details->item_id = $cartItem->item_id;
-                $outegoing_item_details->item_qty = $cartItem->item_qty;
-                $outegoing_item_details->save();
+            foreach ($cartItems as $cartItem) {
+                $outgoing_item_details = new OutgoingItemDetail();
+                $outgoing_item_details->outgoing_item_id = $outgoing_item->id;
+                $outgoing_item_details->item_id = $cartItem->item_id;
+                $outgoing_item_details->item_qty = $cartItem->item_qty;
+                $outgoing_item_details->save();
 
-                $incoming_items = IncomingItem::where([['item_id', $cartItem->item_id]. ['stock', '!=', 0]])->orderBy('created_at', 'asc')->first();
-                $incoming_items -= $cartItem->item_qty;
+                $incoming_items = IncomingItem::where([['item_id', $cartItem->item_id], ['stock', '!=', 0]])->orderBy('created_at', 'asc')->first();
+                $incoming_items->stock -= $cartItem->item_qty;
                 $incoming_items->update();
 
                 $item = Item::where('id', $cartItem->item_id)->first();
@@ -67,7 +67,7 @@ class OutgoingItemController extends Controller
             }
 
             $cartItems = Cart::where('user_id', Auth::id())->get();
-            $cartItems->delete();
+            Cart::destroy($cartItems);
 
             return redirect()->route('outgoing-item.index')->with(['success', 'Berhasil Menambahkan Data !!']);
         } catch (\Throwable $th) {

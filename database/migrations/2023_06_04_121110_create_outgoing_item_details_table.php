@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('outgoing_item_details', function (Blueprint $table) {
             $table->id();
             $table->integer('outgoing_item_id');
-            $table->string('item_id');
-            $table->integer('qty');
+            $table->integer('item_id');
+            $table->integer('item_qty');
             $table->timestamps();
         });
     }
