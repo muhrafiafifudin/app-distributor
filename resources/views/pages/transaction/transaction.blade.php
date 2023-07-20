@@ -140,7 +140,7 @@
                                                                                 </button>
                                                                             </form>
                                                                         @else
-                                                                            <a href="#" class="btn btn-bg-light btn-active-color-muted" disabled>
+                                                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                                                 <!--begin::Svg Icon | path: assets/media/icons/duotone/Interface/Plus-Square.svg-->
                                                                                 <span class="svg-icon svg-icon-muted svg-icon-2hx">
                                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -198,10 +198,12 @@
                                                     <td>{{ $cartItem->item->code }}</td>
                                                     <td>{{ $cartItem->item->item }}</td>
                                                     <td class="text-center">
+                                                        <input type="hidden" class="item-id" value="{{ $cartItem->item_id }}">
+
                                                         <!--begin::Dialer-->
                                                         <div class="position-relative w-lg-200px m-0-auto" id="kt_modal_create_project_budget_setup" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="{{ $cartItem->item->stock }}" data-kt-dialer-step="1" data-kt-dialer-suffix=" pcs">
                                                             <!--begin::Decrease control-->
-                                                            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
+                                                            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0 lessQuantity" data-kt-dialer-control="decrease">
                                                                 <!--begin::Svg Icon | path: icons/stockholm/Code/Minus.svg-->
                                                                 <span class="svg-icon svg-icon-1">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -213,10 +215,10 @@
                                                             </button>
                                                             <!--end::Decrease control-->
                                                             <!--begin::Input control-->
-                                                            <input type="text" class="form-control form-control-solid border-0 text-center" data-kt-dialer-control="input" placeholder="Amount" name="item[qty[]]" readonly="readonly" value="{{ $cartItem->item_qty }}" />
+                                                            <input type="text" class="form-control form-control-solid border-0 text-center qty-input" data-kt-dialer-control="input" placeholder="Amount" name="item[qty][]" readonly="readonly" value="{{ $cartItem->item_qty }}" />
                                                             <!--end::Input control-->
                                                             <!--begin::Increase control-->
-                                                            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
+                                                            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0 addQuantity" data-kt-dialer-control="increase">
                                                                 <!--begin::Svg Icon | path: icons/stockholm/Code/Plus.svg-->
                                                                 <span class="svg-icon svg-icon-1">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -231,7 +233,7 @@
                                                         <!--end::Dialer-->
                                                     </td>
                                                     <td class="text-center">
-                                                        <input type="hidden" class="item-id" name="item[item_id[]]" value="{{ $cartItem->item_id }}">
+                                                        <input type="hidden" class="item-id" name="item[item_id][]" value="{{ $cartItem->item_id }}">
 
                                                         <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-data" title="Hapus">
                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Trash.svg-->

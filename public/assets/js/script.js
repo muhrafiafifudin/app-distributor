@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+});
+
 $(document).on("click", ".delete-data", function (e) {
     e.preventDefault();
 
@@ -20,34 +26,54 @@ $(document).on("click", ".delete-data", function (e) {
     });
 });
 
-// $(document).ready(function() {
-//     $(".delete-data").click(function (e) {
-//         e.preventDefault();
+$(".addQuantity").click(function (e) {
+    e.preventDefault();
 
-//         var item_id = $(this)
-//             .closest(".item-data")
-//             .find(".item-id")
-//             .val();
+    var item_id = $(this).closest(".item-data").find(".item-id").val();
+    var item_qty = $(this).closest(".item-data").find(".qty-input").val();
 
-//         $.ajaxSetup({
-//             headers: {
-//                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-//             },
-//         });
+    var split = item_qty.split(" ");
+    var item_qty = parseInt(split[0]);
 
-//         $.ajax({
-//             method: "POST",
-//             url: "transaksi/delete-item",
-//             data: {
-//                 item_id: item_id,
-//             },
-//             success: function (response) {
-//                 // console.log(response);
-//                 // swal("", response.status, "success").then(function () {
-//                 // });
-//                 location.reload();
-//             },
-//         });
-//     });
-// })
+    var item_qty = item_qty + 1;
 
+    var data = {
+        item_id: item_id,
+        item_qty: item_qty,
+    };
+
+    $.ajax({
+        method: "POST",
+        url: "transaksi/update-item",
+        data: data,
+        success: function (response) {
+            window.location.reload();
+        },
+    });
+});
+
+$(".lessQuantity").click(function (e) {
+    e.preventDefault();
+
+    var item_id = $(this).closest(".item-data").find(".item-id").val();
+    var item_qty = $(this).closest(".item-data").find(".qty-input").val();
+
+    var split = item_qty.split(" ");
+    var item_qty = parseInt(split[0]);
+
+    var item_qty = item_qty - 1;
+
+    var data = {
+        item_id: item_id,
+        item_qty: item_qty,
+    };
+
+    $.ajax({
+        method: "POST",
+        url: "transaksi/update-item",
+        data: data,
+        success: function (response) {
+            window.location.reload();
+        },
+    });
+});
