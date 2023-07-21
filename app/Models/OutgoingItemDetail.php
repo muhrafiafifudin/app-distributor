@@ -12,4 +12,9 @@ class OutgoingItemDetail extends Model
     protected $table = 'outgoing_item_details';
 
     protected $guarded = [];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'item_id');
+    }
 }

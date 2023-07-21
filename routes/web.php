@@ -53,6 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/', 'App\Http\Controllers\Item\OutgoingItemController@store')->name('store');
         Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Item\OutgoingItemController@update')->name('update');
         Route::delete('/{outgoingItem}', 'App\Http\Controllers\Item\OutgoingItemController@destroy')->name('destroy');
+        // Update Process
+        Route::match(['put', 'patch'], '/process-item/{id}', 'App\Http\Controllers\Item\OutgoingItemController@processItem')->name('process-item');
+        Route::match(['put', 'patch'], '/acccept-item/{id}', 'App\Http\Controllers\Item\OutgoingItemController@acceptItem')->name('accept-item');
+        Route::match(['put', 'patch'], '/reject-item/{id}', 'App\Http\Controllers\Item\OutgoingItemController@deleteItem')->name('reject-item');
     });
     // Transaction
     Route::group(['prefix' => 'transaksi', 'as' => 'transaction.'], function () {

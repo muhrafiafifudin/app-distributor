@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->integer('user_id');
-            $table->integer('status')->default(0)->comment('0 = Waiting, 1 = Process, 3 = Reject, 4 = Finish');
+            $table->integer('status')->default(0)->comment('1 = Waiting, 2 = Process, 3 = Finish, 4 = Reject');
             $table->timestamps();
         });
     }

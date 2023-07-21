@@ -16,7 +16,7 @@ class OutgoingItemController extends Controller
 {
     public function index()
     {
-        $outgoing_items = OutgoingItem::all();
+        $outgoing_items = OutgoingItem::with('outgoing_item_detail')->get();
 
         return view('pages.item.outgoing_item', compact('outgoing_items'));
     }
@@ -25,7 +25,7 @@ class OutgoingItemController extends Controller
     {
         try {
             $outgoing_item = new OutgoingItem();
-            $outgoing_item->code = 0;
+            $outgoing_item->code = 'ORD' . rand(00000000,999999999);
             $outgoing_item->user_id = Auth::id();
             $outgoing_item->status = 0;
             $outgoing_item->save();
@@ -78,10 +78,49 @@ class OutgoingItemController extends Controller
 
             return redirect()->route('outgoing-item.index')->with(['success', 'Berhasil Menambahkan Data !!']);
         } catch (\Throwable $th) {
-            dd($th);
             return redirect()->route('outgoing-item.index')->with(['error', 'Gagal Menambahkan Data !!']);
         }
     }
+
+    public function processItem($id)
+    {
+        try {
+            $outgoing_item = OutgoingItem::findOrFail($id);
+            $outgoing_item->status = 2;
+            $outgoing_item->update();
+
+            return redirect()->route('outgoing-item.index')->with(['success', 'Berhasil Mengubah Data !!']);
+        } catch (\Throwable $th) {
+            return redirect()->route('outgoing-item.index')->with(['error', 'Gagal Mengubah Data !!']);
+        }
+    }
+
+    public function acceptItem($id)
+    {
+        try {
+            $outgoing_item = OutgoingItem::findOrFail($id);
+            $outgoing_item->status = 3;
+            $outgoing_item->update();
+
+            return redirect()->route('outgoing-item.index')->with(['success', 'Berhasil Mengubah Data !!']);
+        } catch (\Throwable $th) {
+            return redirect()->route('outgoing-item.index')->with(['error', 'Gagal Mengubah Data !!']);
+        }
+    }
+
+    public function rejectItem($id)
+    {
+        try {
+            $outgoing_item = OutgoingItem::findOrFail($id);
+            $outgoing_item->status = 4;
+            $outgoing_item->update();
+
+            return redirect()->route('outgoing-item.index')->with(['success', 'Berhasil Mengubah Data !!']);
+        } catch (\Throwable $th) {
+            return redirect()->route('outgoing-item.index')->with(['error', 'Gagal Mengubah Data !!']);
+        }
+    }
+
     public function update(Request $request, $id)
     {
         //

@@ -17,4 +17,9 @@ class OutgoingItem extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function outgoing_item_detail()
+    {
+        return $this->hasMany(OutgoingItemDetail::class, 'outgoing_item_id', 'id');
+    }
 }
