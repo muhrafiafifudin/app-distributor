@@ -27,13 +27,13 @@ class UserSeeder extends Seeder
         $admin->assignRole('admin');
 
         $user = User::create([
-            'name' => 'Pimpinan',
-            'email' => 'pimpinan@example.com',
+            'name' => 'Owner',
+            'email' => 'owner@example.com',
             'password' => bcrypt('12345678'),
             'created_at' => Carbon::now()
         ]);
 
-        $user->assignRole('pimpinan');
+        $user->assignRole('owner');
 
         $user = User::create([
             'name' => 'User',
