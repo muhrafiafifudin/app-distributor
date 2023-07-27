@@ -27,7 +27,7 @@ class OutgoingItemController extends Controller
             $outgoing_item = new OutgoingItem();
             $outgoing_item->code = 'ORD' . rand(00000000,999999999);
             $outgoing_item->user_id = Auth::id();
-            $outgoing_item->status = 0;
+            $outgoing_item->status = 1;
             $outgoing_item->save();
 
             $carts = Cart::where('user_id', Auth::id())->get();
