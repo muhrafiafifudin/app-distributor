@@ -1,0 +1,1 @@
+$("#supplier_table").DataTable();

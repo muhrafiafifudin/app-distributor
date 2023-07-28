@@ -40,6 +40,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Main\ItemController@update')->name('update');
         Route::delete('/{item}', 'App\Http\Controllers\Main\ItemController@destroy')->name('destroy');
     });
+    // Supplier
+    Route::group(['prefix' => 'suplier', 'as' => 'supplier.'], function () {
+        Route::get('/', 'App\Http\Controllers\Main\SupplierController@index')->name('index');
+        Route::post('/', 'App\Http\Controllers\Main\SupplierController@store')->name('store');
+        Route::match(['put', 'patch'], '/{item}', 'App\Http\Controllers\Main\SupplierController@update')->name('update');
+        Route::delete('/{supplier}', 'App\Http\Controllers\Main\SupplierController@destroy')->name('destroy');
+    });
     // Incoming Item
     Route::group(['prefix' => 'barang-masuk', 'as' => 'incoming-item.'], function () {
         Route::get('/', 'App\Http\Controllers\Item\IncomingItemController@index')->name('index');
