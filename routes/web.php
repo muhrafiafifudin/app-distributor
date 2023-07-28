@@ -74,7 +74,12 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // Report
     Route::group(['prefix' => 'laporan', 'as' => 'report.'], function () {
-        Route::get('/', 'App\Http\Controllers\Report\ReportController@index')->name('index');
+        // Report Incoming Item
+        Route::get('/barang-masuk', 'App\Http\Controllers\Report\ReportController@incoming_item')->name('incoming-item');
+        Route::get('print-pdf-masuk/{fromDate}/{toDate}', 'App\Http\Controllers\Report\ReportController@pdf_print_incoming');
+        // Report Incoming Item
+        Route::get('/barang-keluar', 'App\Http\Controllers\Report\ReportController@outgoing_item')->name('outgoing-item');
+        Route::get('print-pdf-keluar/{fromDate}/{toDate}', 'App\Http\Controllers\Report\ReportController@pdf_print_outgoing');
     });
     // User
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

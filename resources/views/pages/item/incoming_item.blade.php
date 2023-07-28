@@ -118,6 +118,19 @@
 
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-5 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold mb-2">Suplier</label>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Pilih Suplier" name="supplier_id">
+                                                            <option value="">Pilih Suplier</option>
+
+                                                            @foreach ($suppliers as $supplier)
+                                                                <option value="{{ $supplier->id }}">{{ $supplier->supplier }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <!--end::Input group-->
+
+                                                    <!--begin::Input group-->
+                                                    <div class="d-flex flex-column mb-5 fv-row">
                                                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">Jumlah</label>
                                                         <input type="text" class="form-control form-control-solid" placeholder="Masukkan Jumlah" name="stock" required />
                                                     </div>
@@ -154,6 +167,7 @@
                                             <th>No.</th>
                                             <th>Kode</th>
                                             <th>Nama Barang</th>
+                                            <th>Suplier</th>
                                             <th class="text-center">Total Barang</th>
                                             <th class="text-center">Tanggal</th>
                                             <th class="text-center">Aksi</th>
@@ -166,6 +180,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $incoming_item->code }}</td>
                                                 <td>{{ $incoming_item->item->item }}</td>
+                                                <td>{{ $incoming_item->supplier->supplier }}</td>
                                                 <td class="text-center">{{ $incoming_item->stock . ' pcs' }}</td>
                                                 <td class="text-center">{{ \Carbon\Carbon::parse($incoming_item->created_at)->translatedFormat('j F Y') }}</td>
                                                 <td class="text-center">
@@ -260,6 +275,19 @@
 
                                                                     @foreach ($items as $item)
                                                                         <option value="{{ $item->id }}" {{ $item->id == $incoming_item->item_id ? 'selected' : '' }}>{{ $item->item }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <!--end::Input group-->
+
+                                                            <!--begin::Input group-->
+                                                            <div class="d-flex flex-column mb-5 fv-row">
+                                                                <label class="d-flex align-items-center fs-6 fw-bold mb-2">Suplier</label>
+                                                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Pilih Suplier" name="supplier_id">
+                                                                    <option value="">Pilih Suplier</option>
+
+                                                                    @foreach ($suppliers as $supplier)
+                                                                        <option value="{{ $supplier->id }}" {{ $supplier->id == $incoming_item->supplier_id ? 'selected' : '' }}>{{ $supplier->supplier }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>

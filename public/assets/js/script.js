@@ -26,6 +26,8 @@ $(document).on("click", ".delete-data", function (e) {
     });
 });
 
+$(".date-picker").flatpickr();
+
 $(".addQuantity").click(function (e) {
     e.preventDefault();
 
