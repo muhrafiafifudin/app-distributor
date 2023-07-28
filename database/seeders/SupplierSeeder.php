@@ -18,11 +18,39 @@ class SupplierSeeder extends Seeder
     {
         DB::table('suppliers')->insert([
             [
-                'supplier' => 'Supplier 1',
+                'supplier' => 'PT. Swatama Karya Gemilang ',
                 'created_at' => Carbon::now(),
             ],
             [
-                'supplier' => 'Supplier 2',
+                'supplier' => 'PT. Graha Media Raya',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'CV. Astro Teknindo',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'Mas Comodos Utama Label',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'Metal Fastindo Abadi',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'Aseli Garmen Jakarta',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'PT. Kusuma Sandang Mekarjaya',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'PT. Altra Multi Sandang',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'supplier' => 'PT. Pintex',
                 'created_at' => Carbon::now(),
             ],
         ]);

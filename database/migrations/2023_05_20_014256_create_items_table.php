@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('item');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('stock')->default(0)->unsigned();
             $table->timestamps();
         });
