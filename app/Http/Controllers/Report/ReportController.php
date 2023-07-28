@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Report;
 
+use App\Models\OutgoingItem;
 use PDF;
-use App\Http\Controllers\Controller;
+use App\Models\IncomingItem;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
@@ -15,9 +17,14 @@ class ReportController extends Controller
 
     public function pdf_print_incoming($fromDate, $toDate)
     {
-        $pdf = PDF::loadView('pages.report.pdf.incoming_item', compact('fromDate', 'toDate'))->setPaper('a4', 'potrait');
+        $incoming_items = IncomingItem::whereDate('created_at', '>=', $fromDate)
+            ->whereDate('created_at', '<=', $toDate)
+            ->get();
 
-        return $pdf->download('Barang Masukj.pdf');
+
+        $pdf = PDF::loadView('pages.report.pdf.incoming_item', compact('fromDate', 'toDate', 'incoming_items'))->setPaper('a4', 'potrait');
+
+        return $pdf->download('Barang Masuk.pdf');
     }
 
     public function outgoing_item()
@@ -27,6 +34,13 @@ class ReportController extends Controller
 
     public function pdf_print_outgoing($fromDate, $toDate)
     {
-        dd($fromDate, $toDate);
+        $outgoing_items = OutgoingItem::with('outgoing_item_detail')->whereDate('created_at', '>=', $fromDate)
+            ->whereDate('created_at', '<=', $toDate)
+            ->get();
+
+
+        $pdf = PDF::loadView('pages.report.pdf.outgoing_item', compact('fromDate', 'toDate', 'outgoing_items'))->setPaper('a4', 'potrait');
+
+        return $pdf->download('Barang Keluar.pdf');
     }
 }

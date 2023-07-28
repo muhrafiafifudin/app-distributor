@@ -61,7 +61,7 @@
                                     <input class="form-control form-control-solid date-picker" placeholder="Pilih Tanggal" id="toDate" />
                                 </div>
                                 <div class="col-lg-1">
-                                    <a href="" class="btn btn-primary" onclick="this.href='laporan/print-pdf-keluar/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value" target="_blank">Print</a>
+                                    <a href="" class="btn btn-primary" onclick="this.href='print-pdf-keluar/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value" target="_blank">Print</a>
                                 </div>
                             </div>
                         </div>
