@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Item;
 
 use Carbon\Carbon;
 use App\Models\Item;
+use App\Models\Supplier;
 use App\Models\IncomingItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,8 @@ class IncomingItemController extends Controller
     {
         $items = Item::all();
         $incoming_items = IncomingItem::where('stock', '!=', 0)->get();
+
+        $suppliers = Supplier::all();
 
         $currentYear = Carbon::now()->format('Y');
         $lastRecord = IncomingItem::orderBy('id', 'desc')->first();
@@ -35,7 +38,7 @@ class IncomingItemController extends Controller
 
         $code = $currentYear . '_' . $temporaryCode;
 
-        return view('pages.item.incoming_item', compact('code', 'items', 'incoming_items'));
+        return view('pages.item.incoming_item', compact('code', 'items', 'suppliers', 'incoming_items'));
     }
 
     public function store(Request $request)
@@ -44,6 +47,7 @@ class IncomingItemController extends Controller
             $incoming_item = new IncomingItem();
             $incoming_item->code = $request->code;
             $incoming_item->item_id = $request->item_id;
+            $incoming_item->supplier_id = $request->supplier_id;
             $incoming_item->stock = $request->stock;
             $incoming_item->user_id = Auth::user()->id;
             $incoming_item->save();
@@ -68,6 +72,7 @@ class IncomingItemController extends Controller
             $incoming_item = IncomingItem::findOrFail($id);
             $incoming_item->code = $request->code;
             $incoming_item->item_id = $request->item_id;
+            $incoming_item->supplier_id = $request->supplier_id;
             $incoming_item->stock = $request->stock;
             $incoming_item->user_id = Auth::user()->id;
             $incoming_item->update();

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->integer('item_id');
+            $table->integer('supplier_id');
             $table->integer('stock')->unsigned();
             $table->integer('user_id');
             $table->timestamps();
