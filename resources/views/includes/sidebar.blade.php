@@ -46,12 +46,15 @@
                     </a>
                 </div>
 
-                @role('admin')
+                @role('admin|owner')
                     <div class="menu-item">
                         <div class="menu-content pt-8 pb-2">
                             <span class="menu-section text-muted text-uppercase fs-8">Main</span>
                         </div>
                     </div>
+                @endrole
+
+                @role('admin|owner')
                     <div class="menu-item">
                         <a class="menu-link {{ request()->is('barang') ? 'active' : '' }}" href="{{ route('item.index') }}">
                             <span class="menu-icon">
@@ -70,6 +73,9 @@
                             <span class="menu-title">Barang</span>
                         </a>
                     </div>
+                @endrole
+
+                @role('admin')
                     <div class="menu-item">
                         <a class="menu-link {{ request()->is('suplier') ? 'active' : '' }}" href="{{ route('supplier.index') }}">
                             <span class="menu-icon">
