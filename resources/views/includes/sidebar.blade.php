@@ -166,6 +166,10 @@
                                 <!--end::Svg Icon-->
                             </span>
                             <span class="menu-title">Barang Keluar</span>
+
+                            @if ($count_outgoing_item)
+                                <span class="badge badge-square badge-primary">{{ $count_outgoing_item }}</span>
+                            @endif
                         </a>
                     </div>
                 @endrole
