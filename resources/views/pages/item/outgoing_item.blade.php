@@ -73,6 +73,7 @@
                                                         <th>No.</th>
                                                         <th>Kode</th>
                                                         <th class="text-center">User</th>
+                                                        <th class="text-center">Barang</th>
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Status</th>
                                                         <th class="text-center">Aksi</th>
@@ -86,6 +87,15 @@
                                                                 <td>{{ $no++ }}</td>
                                                                 <td>{{ $outgoing_item->code }}</td>
                                                                 <td class="text-center">{{ $outgoing_item->user->name }}</td>
+                                                                <td class="text-center">
+                                                                    @foreach ($outgoing_item->outgoing_item_detail as $outgoing_item_detail)
+                                                                        <div class="d-flex flex-column">
+                                                                            <li class="d-flex align-items-center py-2">
+                                                                                <span class="bullet me-5"></span> {{ '(' . ($outgoing_item_detail->item->code) . ') ' . $outgoing_item_detail->item->item . ' : ' . $outgoing_item_detail->item_qty . ' pcs' }}
+                                                                            </li>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </td>
                                                                 <td class="text-center">{{ $outgoing_item->created_at }}</td>
                                                                 <td class="text-center">
 
@@ -104,7 +114,7 @@
                                                                         @csrf
                                                                         @method('PUT')
 
-                                                                        <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
+                                                                        {{-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
                                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Settings-1.svg-->
                                                                             <span class="svg-icon svg-icon-3">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -116,7 +126,7 @@
                                                                                 </svg>
                                                                             </span>
                                                                             <!--end::Svg Icon-->
-                                                                        </a>
+                                                                        </a> --}}
 
                                                                         @role('admin')
                                                                             <button type="submit" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
@@ -154,6 +164,7 @@
                                                         <th>No.</th>
                                                         <th>Kode</th>
                                                         <th class="text-center">User</th>
+                                                        <th class="text-center">Barang</th>
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Status</th>
                                                         <th class="text-center">Aksi</th>
@@ -167,6 +178,15 @@
                                                                 <td>{{ $no++ }}</td>
                                                                 <td>{{ $outgoing_item->code }}</td>
                                                                 <td class="text-center">{{ $outgoing_item->user->name }}</td>
+                                                                <td class="text-center">
+                                                                    @foreach ($outgoing_item->outgoing_item_detail as $outgoing_item_detail)
+                                                                        <div class="d-flex flex-column">
+                                                                            <li class="d-flex align-items-center py-2">
+                                                                                <span class="bullet me-5"></span> {{ '(' . ($outgoing_item_detail->item->code) . ') ' . $outgoing_item_detail->item->item . ' : ' . $outgoing_item_detail->item_qty . ' pcs' }}
+                                                                            </li>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </td>
                                                                 <td class="text-center">{{ $outgoing_item->created_at }}</td>
                                                                 <td class="text-center">
 
@@ -185,7 +205,7 @@
                                                                         @csrf
                                                                         @method('PUT')
 
-                                                                        <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
+                                                                        {{-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
                                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Settings-1.svg-->
                                                                             <span class="svg-icon svg-icon-3">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -197,7 +217,7 @@
                                                                                 </svg>
                                                                             </span>
                                                                             <!--end::Svg Icon-->
-                                                                        </a>
+                                                                        </a> --}}
 
                                                                         @role('user')
                                                                             <button type="submit" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
@@ -235,6 +255,7 @@
                                                         <th>No.</th>
                                                         <th>Kode</th>
                                                         <th class="text-center">User</th>
+                                                        <th class="text-center">Barang</th>
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Status</th>
                                                         <th class="text-center">Aksi</th>
@@ -248,6 +269,15 @@
                                                                 <td>{{ $no++ }}</td>
                                                                 <td>{{ $outgoing_item->code }}</td>
                                                                 <td class="text-center">{{ $outgoing_item->user->name }}</td>
+                                                                <td class="text-center">
+                                                                    @foreach ($outgoing_item->outgoing_item_detail as $outgoing_item_detail)
+                                                                        <div class="d-flex flex-column">
+                                                                            <li class="d-flex align-items-center py-2">
+                                                                                <span class="bullet me-5"></span> {{ '(' . ($outgoing_item_detail->item->code) . ') ' . $outgoing_item_detail->item->item . ' : ' . $outgoing_item_detail->item_qty . ' pcs' }}
+                                                                            </li>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </td>
                                                                 <td class="text-center">{{ $outgoing_item->created_at }}</td>
                                                                 <td class="text-center">
 
@@ -262,7 +292,7 @@
                                                                     @endif
 
                                                                 <td class="text-center">
-                                                                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
+                                                                    {{-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Lihat" data-bs-toggle="modal" data-bs-target="#modal_view_outgoing_{{ $outgoing_item->id }}">
                                                                         <!--begin::Svg Icon | path: icons/stockholm/General/Settings-1.svg-->
                                                                         <span class="svg-icon svg-icon-3">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -274,7 +304,7 @@
                                                                             </svg>
                                                                         </span>
                                                                         <!--end::Svg Icon-->
-                                                                    </a>
+                                                                    </a> --}}
                                                                 </td>
                                                             </tr>
                                                         @endif
