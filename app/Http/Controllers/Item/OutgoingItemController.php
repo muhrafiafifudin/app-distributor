@@ -45,7 +45,7 @@ class OutgoingItemController extends Controller
                 $remaining_qty = $item_qty;
 
                 while ($remaining_qty > 0) {
-                    $incoming_item = IncomingItem::where([['item_id', $item_id], ['stock', '>', 0]])->orderBy('created_at', 'asc')->first();
+                    $incoming_item = IncomingItem::where([['item_id', $item_id], ['stock', '>', 0], ['status', 1]])->orderBy('created_at', 'asc')->first();
 
                     if ($incoming_item && $incoming_item->stock >= $remaining_qty) {
                         $incoming_item->stock -= $remaining_qty;
@@ -54,15 +54,15 @@ class OutgoingItemController extends Controller
                         $remaining_qty = 0;
 
                         if ($incoming_item->stock == 0) {
-                            $incoming_item->delete();
+                            $incoming_item->status = 0;
+                            $incoming_item->save();
                         }
                     } elseif ($incoming_item) {
                         $remaining_qty -= $incoming_item->stock;
 
                         $incoming_item->stock = 0;
+                        $incoming_item->status = 0;
                         $incoming_item->save();
-
-                        $incoming_item->delete();
                     } else {
                         break;
                     }

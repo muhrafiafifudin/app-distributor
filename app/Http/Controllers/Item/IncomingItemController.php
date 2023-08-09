@@ -48,7 +48,8 @@ class IncomingItemController extends Controller
             $incoming_item->code = $request->code;
             $incoming_item->item_id = $request->item_id;
             $incoming_item->supplier_id = $request->supplier_id;
-            $incoming_item->stock = $request->stock;
+            $incoming_item->qty = $request->total;
+            $incoming_item->stock = $request->total;
             $incoming_item->user_id = Auth::user()->id;
             $incoming_item->save();
 

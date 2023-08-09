@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('code');
             $table->integer('item_id');
             $table->integer('supplier_id');
+            $table->integer('qty')->unsigned();
             $table->integer('stock')->unsigned();
             $table->integer('user_id');
+            $table->integer('status')->default(1)->comment('0 = Out of Stock, 1 = In Stock');
             $table->timestamps();
         });
     }

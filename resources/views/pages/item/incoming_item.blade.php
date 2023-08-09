@@ -132,7 +132,7 @@
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-5 fv-row">
                                                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">Jumlah</label>
-                                                        <input type="text" class="form-control form-control-solid" placeholder="Masukkan Jumlah" name="stock" required />
+                                                        <input type="text" class="form-control form-control-solid" placeholder="Masukkan Jumlah" name="total" required />
                                                     </div>
                                                     <!--end::Input group-->
 
@@ -168,7 +168,8 @@
                                             <th>Kode</th>
                                             <th>Nama Barang</th>
                                             <th>Suplier</th>
-                                            <th class="text-center">Total Barang</th>
+                                            <th class="text-center">Stok Awal</th>
+                                            <th class="text-center">Stok Akhir</th>
                                             <th class="text-center">Tanggal</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
@@ -181,6 +182,7 @@
                                                 <td>{{ $incoming_item->code }}</td>
                                                 <td>{{ $incoming_item->item->item }}</td>
                                                 <td>{{ $incoming_item->supplier->supplier }}</td>
+                                                <td class="text-center">{{ $incoming_item->qty . ' pcs' }}</td>
                                                 <td class="text-center">{{ $incoming_item->stock . ' pcs' }}</td>
                                                 <td class="text-center">{{ \Carbon\Carbon::parse($incoming_item->created_at)->translatedFormat('j F Y') }}</td>
                                                 <td class="text-center">
