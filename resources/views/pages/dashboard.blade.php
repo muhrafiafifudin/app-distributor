@@ -17,9 +17,7 @@
                     <!--begin::Separator-->
                     <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
                     <!--end::Separator-->
-                    <!--begin::Description-->
-                    <small class="text-muted fs-7 fw-bold my-1 ms-1">#XRS-45670</small>
-                    <!--end::Description--></h1>
+                    </h1>
                     <!--end::Title-->
                 </div>
                 <!--end::Page title-->
@@ -35,9 +33,6 @@
                 <div class="card  card-stretch shadow mb-5">
                     <div class="card-header">
                         <h3 class="card-title">Selamat Datang di Sistem inventory RAW Material Warehouse PT. Aseli Garmen Indonesia</h3>
-                    </div>
-                    <div class="card-body">
-                        Raw Material Warehouse (Ruang Persediaan). Jenis pergudangan ini berfungsi untuk menyimpan setiap material yang dibutuhkan oleh proses produksi. Gudang tipe ini terbagi menjadi dua tipe ruangan, yaitu di dalam gedung pabrik atau ruangan produksi (indoor) dan ada beberapa material yang disimpan di luar gedung (outdoor).
                     </div>
                 </div>
                 <!--end::Text Information-->
