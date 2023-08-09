@@ -29,12 +29,12 @@ class ReportController extends Controller
         //     ->get();
 
         if ($itemId !== 0) {
-            $outgoing_items = OutgoingItemDetail::whereDate('created_at', '>=', $fromDate)
+            $incoming_items = IncomingItem::whereDate('created_at', '>=', $fromDate)
                 ->whereDate('created_at', '<=', $toDate)
                 ->where('item_id', $itemId)
                 ->get();
         } else {
-            $outgoing_items = OutgoingItemDetail::whereDate('created_at', '>=', $fromDate)
+            $incoming_items = IncomingItem::whereDate('created_at', '>=', $fromDate)
                 ->whereDate('created_at', '<=', $toDate)
                 ->get();
         }

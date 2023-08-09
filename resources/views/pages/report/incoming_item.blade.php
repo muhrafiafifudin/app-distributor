@@ -75,7 +75,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a href="" class="btn btn-primary" onclick="this.href='print-pdf-keluar/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value + '/' + document.getElementById('itemId').value" target="_blank">Print</a>
+                                    <a href="" class="btn btn-primary" onclick="this.href='print-pdf-masuk/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value + '/' + document.getElementById('itemId').value" target="_blank">Print</a>
                                 </div>
                                 <div class="col-lg-1"></div>
                             </div>
