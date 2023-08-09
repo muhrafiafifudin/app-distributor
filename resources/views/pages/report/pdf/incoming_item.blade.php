@@ -47,10 +47,6 @@
 <table width="100%" style="border: none; margin-top: 8rem">
     <tr style="border: none">
         <td width="25%" style="border: none; line-height:10px">
-            <p class="text-center" style="color: white !important">Surakarta, {{ $today }}</p>
-            <p class="text-center">Pemilik</p>
-            <br><br><br><br>
-            <p class="text-center">Pemilik</p>
         </td>
         <td width="25%" style="border: none">
         </td>
@@ -60,7 +56,7 @@
             <p class="text-center">Surakarta, {{ $today }}</p>
             <p class="text-center">Admin</p>
             <br><br><br><br>
-            <p class="text-center">Admin</p>
+            <p class="text-center">.......................</p>
         </td>
     </tr>
 </table>

@@ -15,14 +15,29 @@ class ReportController extends Controller
 {
     public function incoming_item()
     {
-        return view('pages.report.incoming_item');
+        $items = Item::all();
+
+        return view('pages.report.incoming_item', compact('items'));
     }
 
-    public function pdf_print_incoming($fromDate, $toDate)
+    public function pdf_print_incoming($fromDate, $toDate, $itemId)
     {
-        $incoming_items = IncomingItem::whereDate('created_at', '>=', $fromDate)
-            ->whereDate('created_at', '<=', $toDate)
-            ->get();
+        $itemId = intval($itemId);
+
+        // $incoming_items = IncomingItem::whereDate('created_at', '>=', $fromDate)
+        //     ->whereDate('created_at', '<=', $toDate)
+        //     ->get();
+
+        if ($itemId !== 0) {
+            $outgoing_items = OutgoingItemDetail::whereDate('created_at', '>=', $fromDate)
+                ->whereDate('created_at', '<=', $toDate)
+                ->where('item_id', $itemId)
+                ->get();
+        } else {
+            $outgoing_items = OutgoingItemDetail::whereDate('created_at', '>=', $fromDate)
+                ->whereDate('created_at', '<=', $toDate)
+                ->get();
+        }
 
         $today = Carbon::now()->isoFormat('D MMMM Y');
 
