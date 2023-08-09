@@ -48,21 +48,36 @@
                         <!--begin::Body-->
                         <div class="card-body py-3 pt-10">
                             <div class="row mb-10 flex-center mt-10">
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-1 text-end">
                                     <label class="fs-6 fw-bold mb-2 py-3">Dari</label>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
                                     <input class="form-control form-control-solid date-picker" placeholder="Pilih Tanggal" id="fromDate" />
                                 </div>
                                 <div class="col-lg-1 text-end">
                                     <label class="fs-6 fw-bold mb-2 py-3">Sampai</label>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
                                     <input class="form-control form-control-solid date-picker" placeholder="Pilih Tanggal" id="toDate" />
                                 </div>
-                                <div class="col-lg-1">
-                                    <a href="" class="btn btn-primary" onclick="this.href='print-pdf-keluar/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value" target="_blank">Print</a>
+                                <div class="col-lg-1 text-end">
+                                    <label class="fs-6 fw-bold mb-2 py-3">Barang</label>
                                 </div>
+                                <div class="col-lg-2">
+                                    <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Pilih Barang" id="itemId">
+                                        <option value="">Pilih Barang</option>
+                                        <option value="0">Semua Barang</option>
+
+                                        @foreach ($items as $item)
+                                            <option value="{{ $item->id }}">{{ $item->item }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-1">
+                                    <a href="" class="btn btn-primary" onclick="this.href='print-pdf-keluar/' + document.getElementById('fromDate').value + '/' + document.getElementById('toDate').value + '/' + document.getElementById('itemId').value" target="_blank">Print</a>
+                                </div>
+                                <div class="col-lg-1"></div>
                             </div>
                         </div>
                         <!--end::Body-->

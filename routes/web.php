@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('print-pdf-masuk/{fromDate}/{toDate}', 'App\Http\Controllers\Report\ReportController@pdf_print_incoming');
         // Report Incoming Item
         Route::get('/barang-keluar', 'App\Http\Controllers\Report\ReportController@outgoing_item')->name('outgoing-item');
-        Route::get('print-pdf-keluar/{fromDate}/{toDate}', 'App\Http\Controllers\Report\ReportController@pdf_print_outgoing');
+        Route::get('print-pdf-keluar/{fromDate}/{toDate}/{itemId}', 'App\Http\Controllers\Report\ReportController@pdf_print_outgoing');
     });
     // User
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
