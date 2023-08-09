@@ -75,17 +75,14 @@ class TransactionController extends Controller
                     $cartItem = Cart::where([['item_id', $item_id], ['user_id', Auth::id()]])->first();
                     $cartItem->delete();
 
-                    // return response()->json(['status' => 'Produk Berhasil Dihapus !!']);
-                    return redirect()->route('transaction.index')->with(['success' => 'Berhasil Menghapus Data !!']);
+                    return redirect()->route('transaction.index');
                 }
             } else {
-                return redirect()->route('transaction.index')->with(['success' => 'Gagal Menghapus Data !!']);
-                // return response()->json(['status' => "Silahkan Login Terlebih Dahulu"]);
+                return redirect()->route('transaction.index');
             }
 
         } catch (\Throwable $th) {
-            dd($th);
-            return redirect()->route('transaction.index')->with(['error' => 'Gagal Menghapus Data !!']);
+            return redirect()->route('transaction.index');
         }
     }
 }

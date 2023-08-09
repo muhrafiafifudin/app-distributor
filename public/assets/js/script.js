@@ -7,7 +7,7 @@ $.ajaxSetup({
 $(document).on("click", ".delete-data", function (e) {
     e.preventDefault();
 
-    var form = $(this).closest("form");
+    var item_id = $(".item-id").val()
 
     Swal.fire({
         html: "Yakin untuk menghapus data ??",
@@ -21,7 +21,14 @@ $(document).on("click", ".delete-data", function (e) {
         },
     }).then((result) => {
         if (result.isConfirmed) {
-            form.submit();
+            $.ajax({
+                url: "transaksi/delete-item",
+                method: "POST",
+                data: { item_id: item_id },
+                success: function (response) {
+                    location.reload();
+                },
+            });
         }
     });
 });

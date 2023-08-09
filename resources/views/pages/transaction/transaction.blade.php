@@ -233,8 +233,6 @@
                                                         <!--end::Dialer-->
                                                     </td>
                                                     <td class="text-center">
-                                                        <input type="hidden" class="item-id" name="item[item_id][]" value="{{ $cartItem->item_id }}">
-
                                                         <button type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-data" title="Hapus">
                                                             <!--begin::Svg Icon | path: icons/stockholm/General/Trash.svg-->
                                                             <span class="svg-icon svg-icon-3">
@@ -266,7 +264,7 @@
                                                 <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->Tambah Barang
+                                        <!--end::Svg Icon-->Tambah Transaksi
                                     </button>
                                 </div>
                             </form>
